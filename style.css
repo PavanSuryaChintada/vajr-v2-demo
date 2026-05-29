@@ -1185,7 +1185,7 @@ img {
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--champagne);
+  color: var(--text-muted);
   margin-bottom: 6px;
 }
 
@@ -1610,7 +1610,7 @@ img {
   }
 
   .about-stats-col {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 2px;
   }
 
@@ -1636,7 +1636,22 @@ img {
   }
 
   .craft-inner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .craft-image-col {
+    width: 100%;
+  }
+
+  .glass-panel {
+    width: 100%;
+    margin-left: 0;
+    margin-top: -48px;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    z-index: 2;
   }
 
   .craft-pillars {
@@ -1676,6 +1691,370 @@ img {
 
   .hero-title {
     font-size: clamp(40px, 12vw, 72px);
+  }
+
+  .vertical-label {
+    display: none;
+  }
+
+  .sig-card {
+    width: calc(100vw - 40px);
+  }
+
+  .craft-badge {
+    padding: 16px 20px;
+  }
+
+  .craft-badge-num {
+    font-size: 36px;
+  }
+
+  .cta-title {
+    font-size: clamp(42px, 14vw, 90px);
+  }
+
+  .frame-counter {
+    right: 12px;
+    bottom: 20px;
+  }
+
+  .showrooms-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: clamp(32px, 10.5vw, 56px);
+  }
+
+  .section-title {
+    font-size: clamp(34px, 10vw, 60px);
+  }
+
+  .sig-card {
+    width: calc(100vw - 32px);
+  }
+
+  .sig-card-info {
+    padding: 20px 20px 28px;
+  }
+}
+
+
+/* ════════════════════════════════════════
+   SCROLL PROGRESS BAR (left edge)
+════════════════════════════════════════ */
+#scroll-progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#scroll-progress-fill {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(
+    to bottom,
+    var(--rust-orange),
+    var(--gold)
+  );
+  transition: height 0.08s linear;
+  will-change: height;
+}
+
+
+/* ════════════════════════════════════════
+   CURSOR GLOW (desktop only)
+════════════════════════════════════════ */
+#cursor-glow {
+  position: fixed;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(201, 168, 76, 0.055) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 9997;
+  left: -180px;
+  top: -180px;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.6s;
+}
+
+
+/* ════════════════════════════════════════
+   MARQUEE STRIP
+════════════════════════════════════════ */
+.marquee-strip {
+  overflow: hidden;
+  background: var(--dark);
+  border-top: 1px solid rgba(201, 168, 76, 0.12);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  padding: 14px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.marquee-strip--light {
+  background: var(--bg-secondary);
+  border-color: rgba(181, 69, 26, 0.1);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.marquee-track--reverse .marquee-content {
+  animation-direction: reverse;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  animation: marqueeMove 28s linear infinite;
+}
+
+.marquee-strip--light .marquee-content {
+  animation-duration: 32s;
+}
+
+.marquee-content span {
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(232, 213, 163, 0.55);
+  padding: 0 28px;
+}
+
+.marquee-strip--light .marquee-content span {
+  color: rgba(104, 92, 83, 0.6);
+}
+
+.marquee-gem {
+  color: rgba(201, 168, 76, 0.45) !important;
+  padding: 0 6px !important;
+  font-size: 7px !important;
+  letter-spacing: 0 !important;
+}
+
+.marquee-strip--light .marquee-gem {
+  color: rgba(181, 69, 26, 0.35) !important;
+}
+
+@keyframes marqueeMove {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content { animation: none; }
+}
+
+
+/* ════════════════════════════════════════
+   SCROLL STORY SECTION
+════════════════════════════════════════ */
+.story-section {
+  position: relative;
+  height: 500vh;
+}
+
+.story-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+}
+
+/* Ambient radial glow in background */
+.story-ambient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(181, 69, 26, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Right side scroll progress track */
+.story-progress {
+  position: absolute;
+  right: clamp(20px, 4vw, 64px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 36vh;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 5;
+}
+
+.story-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--rust-orange), var(--gold));
+  transition: height 0.05s linear;
+  will-change: height;
+}
+
+/* Left side chapter number (decorative ghost) */
+.story-chapter-num {
+  position: absolute;
+  left: clamp(16px, 4vw, 64px);
+  bottom: clamp(40px, 6vh, 80px);
+  font-family: var(--font-display);
+  font-size: clamp(80px, 18vw, 220px);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 168, 76, 0.08);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s;
+}
+
+/* Top eyebrow label */
+.story-eyebrow {
+  position: absolute;
+  top: clamp(40px, 7vh, 80px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.5);
+  white-space: nowrap;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* The stage holds all panels absolutely */
+.story-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+/* Each panel overlaps fully in the stage */
+.story-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(20px, 6vw, 100px);
+  opacity: 0;
+}
+
+/* The mega-word */
+.story-word {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 17vw, 240px);
+  font-weight: 600;
+  line-height: 0.88;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.story-word--gold {
+  color: var(--gold);
+}
+
+/* Individual character span */
+.story-word .sc {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Sub-label under word */
+.story-panel-sub {
+  font-family: var(--font-label);
+  font-size: clamp(9px, 1vw, 12px);
+  font-weight: 400;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.55);
+  margin-top: 36px;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+/* Brand panel: VAJR gets special treatment */
+.story-panel--brand .story-word {
+  font-family: var(--font-label);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+
+/* Decorative horizontal rule above/below word */
+.story-panel::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 0;
+  background: rgba(201, 168, 76, 0.12);
+  transition: height 0.8s var(--ease-luxury);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .story-word {
+    font-size: clamp(52px, 18vw, 140px);
+  }
+
+  .story-chapter-num {
+    display: none;
+  }
+
+  .story-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.4em;
+  }
+
+  .story-progress {
+    right: 12px;
+    height: 28vh;
   }
 }
 

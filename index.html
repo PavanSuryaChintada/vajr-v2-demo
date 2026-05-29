@@ -26,6 +26,11 @@
 </head>
 <body>
 
+  <!-- Scroll progress bar (left edge) -->
+  <div id="scroll-progress" aria-hidden="true">
+    <div id="scroll-progress-fill"></div>
+  </div>
+
   <!-- ═══════════════════════════════════════════ -->
   <!-- NAVIGATION -->
   <!-- ═══════════════════════════════════════════ -->
@@ -91,6 +96,32 @@
   </section>
 
   <!-- ═══════════════════════════════════════════ -->
+  <!-- MARQUEE STRIP 1 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="marquee-strip" aria-hidden="true" role="presentation">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>Diamond Rings</span><span class="marquee-gem">◈</span>
+        <span>Bridal Collections</span><span class="marquee-gem">◈</span>
+        <span>Gold Necklaces</span><span class="marquee-gem">◈</span>
+        <span>Waist Chains</span><span class="marquee-gem">◈</span>
+        <span>Heritage Pieces</span><span class="marquee-gem">◈</span>
+        <span>Signature Sets</span><span class="marquee-gem">◈</span>
+        <span>Crafted Since 1987</span><span class="marquee-gem">◈</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>Diamond Rings</span><span class="marquee-gem">◈</span>
+        <span>Bridal Collections</span><span class="marquee-gem">◈</span>
+        <span>Gold Necklaces</span><span class="marquee-gem">◈</span>
+        <span>Waist Chains</span><span class="marquee-gem">◈</span>
+        <span>Heritage Pieces</span><span class="marquee-gem">◈</span>
+        <span>Signature Sets</span><span class="marquee-gem">◈</span>
+        <span>Crafted Since 1987</span><span class="marquee-gem">◈</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
   <!-- SECTION 2 — FEATURED COLLECTIONS -->
   <!-- ═══════════════════════════════════════════ -->
   <section id="collections" class="section collections-section" aria-label="Featured collections">
@@ -154,6 +185,84 @@
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SCROLL STORY — A NAME FOR EVERY MOMENT -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="story-section" class="story-section" aria-label="Our collections, a name for every moment">
+    <div class="story-viewport" id="story-viewport">
+
+      <!-- Ambient background glow -->
+      <div class="story-ambient" aria-hidden="true"></div>
+
+      <!-- Right side scroll progress -->
+      <div class="story-progress" aria-hidden="true">
+        <div class="story-progress-fill" id="story-progress-fill"></div>
+      </div>
+
+      <!-- Decorative large ghost chapter number -->
+      <div class="story-chapter-num" id="story-chapter-num" aria-hidden="true">01</div>
+
+      <!-- Top eyebrow -->
+      <p class="story-eyebrow" id="story-eyebrow" aria-hidden="true">A Name For Every Moment</p>
+
+      <!-- All panels stacked in stage -->
+      <div class="story-stage" id="story-stage">
+
+        <div class="story-panel" id="story-panel-0" data-sub="The Eternal Vow" data-num="01">
+          <div class="story-word story-split-word" aria-label="Diamond">DIAMOND</div>
+          <div class="story-panel-sub"></div>
+        </div>
+
+        <div class="story-panel" id="story-panel-1" data-sub="Your Day of Days" data-num="02">
+          <div class="story-word story-split-word" aria-label="Bridal">BRIDAL</div>
+          <div class="story-panel-sub"></div>
+        </div>
+
+        <div class="story-panel" id="story-panel-2" data-sub="Liquid Luxury" data-num="03">
+          <div class="story-word story-split-word" aria-label="Gold">GOLD</div>
+          <div class="story-panel-sub"></div>
+        </div>
+
+        <div class="story-panel" id="story-panel-3" data-sub="Generations of Trust" data-num="04">
+          <div class="story-word story-split-word" aria-label="Heritage">HERITAGE</div>
+          <div class="story-panel-sub"></div>
+        </div>
+
+        <div class="story-panel story-panel--brand" id="story-panel-4" data-sub="Est. 1987 · Hyderabad · India" data-num="">
+          <div class="story-word story-word--gold story-split-word" aria-label="Vajr Jewels">VAJR</div>
+          <div class="story-panel-sub"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- MARQUEE STRIP 2 (light) -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="marquee-strip marquee-strip--light" aria-hidden="true" role="presentation">
+    <div class="marquee-track marquee-track--reverse">
+      <div class="marquee-content">
+        <span>Excellence</span><span class="marquee-gem">◈</span>
+        <span>Heritage</span><span class="marquee-gem">◈</span>
+        <span>Mastery</span><span class="marquee-gem">◈</span>
+        <span>Devotion</span><span class="marquee-gem">◈</span>
+        <span>Precision</span><span class="marquee-gem">◈</span>
+        <span>Legacy</span><span class="marquee-gem">◈</span>
+        <span>Timelessness</span><span class="marquee-gem">◈</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>Excellence</span><span class="marquee-gem">◈</span>
+        <span>Heritage</span><span class="marquee-gem">◈</span>
+        <span>Mastery</span><span class="marquee-gem">◈</span>
+        <span>Devotion</span><span class="marquee-gem">◈</span>
+        <span>Precision</span><span class="marquee-gem">◈</span>
+        <span>Legacy</span><span class="marquee-gem">◈</span>
+        <span>Timelessness</span><span class="marquee-gem">◈</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- SECTION 3 — CRAFTSMANSHIP -->

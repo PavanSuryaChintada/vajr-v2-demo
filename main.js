@@ -699,6 +699,207 @@ function setupNavigation() {
 }
 
 /* ════════════════════════════════════════
+   SCROLL PROGRESS BAR
+════════════════════════════════════════ */
+function setupScrollProgress() {
+  const fill = document.getElementById('scroll-progress-fill');
+  if (!fill) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight <= 0) return;
+    const progress = Math.min(scrollTop / docHeight, 1);
+    fill.style.height = `${progress * 100}%`;
+  }, { passive: true });
+}
+
+
+/* ════════════════════════════════════════
+   CURSOR GLOW (desktop hover only)
+════════════════════════════════════════ */
+function setupCursorGlow() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const glow = document.createElement('div');
+  glow.id = 'cursor-glow';
+  document.body.appendChild(glow);
+
+  const xTo = gsap.quickTo(glow, 'x', { duration: 0.9, ease: 'power3.out' });
+  const yTo = gsap.quickTo(glow, 'y', { duration: 0.9, ease: 'power3.out' });
+
+  let visible = false;
+
+  document.addEventListener('mousemove', (e) => {
+    xTo(e.clientX);
+    yTo(e.clientY);
+    if (!visible) {
+      glow.style.opacity = '1';
+      visible = true;
+    }
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => {
+    glow.style.opacity = '0';
+    visible = false;
+  });
+}
+
+
+/* ════════════════════════════════════════
+   SCROLL STORY SECTION
+════════════════════════════════════════ */
+function setupStorySection() {
+  const section = document.getElementById('story-section');
+  if (!section) return;
+
+  // 1. Split each story word into individual character spans
+  section.querySelectorAll('.story-split-word').forEach(el => {
+    const label = el.getAttribute('aria-label') || el.textContent.trim();
+    el.innerHTML = el.textContent.trim().split('').map(c =>
+      `<span class="sc">${c}</span>`
+    ).join('');
+    el.setAttribute('aria-label', label);
+  });
+
+  // 2. Populate sub-labels from data-sub attributes
+  section.querySelectorAll('.story-panel').forEach(panel => {
+    const sub = panel.querySelector('.story-panel-sub');
+    if (sub) sub.textContent = panel.dataset.sub || '';
+  });
+
+  const panels = Array.from(section.querySelectorAll('.story-panel'));
+  const chapterNumEl = document.getElementById('story-chapter-num');
+  const progressFill = document.getElementById('story-progress-fill');
+  const eyebrow = document.getElementById('story-eyebrow');
+  const chapterNums = panels.map(p => p.dataset.num || '');
+
+  // 3. Set initial hidden states via GSAP
+  gsap.set(panels, { opacity: 0 });
+  panels.forEach(panel => {
+    gsap.set(panel.querySelectorAll('.sc'), { opacity: 0, y: -48, rotateX: -38, transformPerspective: 1000 });
+    gsap.set(panel.querySelector('.story-panel-sub'), { opacity: 0, y: 18 });
+  });
+  if (eyebrow) gsap.set(eyebrow, { opacity: 0, y: 14 });
+
+  // 4. Build the scrub-driven timeline
+  const tl = gsap.timeline();
+
+  const IN   = 0.55;
+  const HOLD = 0.90;
+  const OUT  = 0.40;
+  const GAP  = 0.10;
+
+  // Eyebrow fades in at start
+  tl.fromTo(eyebrow,
+    { opacity: 0, y: 14 },
+    { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' },
+    0
+  );
+
+  let cursor = 0.25;
+
+  panels.forEach((panel, i) => {
+    const chars = panel.querySelectorAll('.sc');
+    const sub   = panel.querySelector('.story-panel-sub');
+
+    // Reveal panel
+    tl.fromTo(panel, { opacity: 0 }, { opacity: 1, duration: 0.05 }, cursor);
+
+    // Characters drop in with stagger
+    tl.fromTo(chars,
+      { opacity: 0, y: -48, rotateX: -38 },
+      { opacity: 1, y: 0, rotateX: 0, stagger: 0.04, duration: IN, ease: 'back.out(1.4)' },
+      cursor
+    );
+
+    // Sub-label rises in
+    if (sub) {
+      tl.fromTo(sub,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' },
+        cursor + IN * 0.65
+      );
+    }
+
+    // Fade out panel (all except last)
+    if (i < panels.length - 1) {
+      const outStart = cursor + IN + HOLD;
+      tl.fromTo([...chars, sub].filter(Boolean),
+        { opacity: 1, y: 0, rotateX: 0 },
+        { opacity: 0, y: 32, rotateX: 12, stagger: { amount: 0.12, from: 'end' }, duration: OUT, ease: 'power2.in' },
+        outStart
+      );
+      tl.fromTo(panel, { opacity: 1 }, { opacity: 0, duration: 0.08 }, outStart + OUT - 0.05);
+      cursor = outStart + OUT + GAP;
+    }
+  });
+
+  // 5. Wire to ScrollTrigger — CSS sticky handles the pin
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 2,
+    onUpdate: (self) => {
+      tl.progress(self.progress);
+
+      // Update ghost chapter number
+      if (chapterNumEl) {
+        const idx = Math.min(Math.floor(self.progress * panels.length), panels.length - 1);
+        chapterNumEl.textContent = chapterNums[idx] || '';
+      }
+
+      // Story section progress fill
+      if (progressFill) {
+        progressFill.style.height = `${self.progress * 100}%`;
+      }
+    }
+  });
+}
+
+
+/* ════════════════════════════════════════
+   ENHANCED SECTION HEADING ENTRANCES
+════════════════════════════════════════ */
+function setupHeadingAnimations() {
+  // Animate .section-eyebrow + .section-title pairs with GSAP for richer reveals
+  document.querySelectorAll('.section-eyebrow').forEach(eyebrow => {
+    // Skip if inside story or hero
+    if (eyebrow.closest('.story-section, #hero-section')) return;
+
+    gsap.from(eyebrow, {
+      opacity: 0,
+      x: -28,
+      duration: 0.75,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: eyebrow,
+        start: 'top 90%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+
+  document.querySelectorAll('.section-title').forEach(title => {
+    if (title.closest('.story-section, #hero-section')) return;
+
+    gsap.from(title, {
+      opacity: 0,
+      y: 50,
+      duration: 1.1,
+      ease: 'power4.out',
+      scrollTrigger: {
+        trigger: title,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+}
+
+
+/* ════════════════════════════════════════
    RESIZE HANDLER
 ════════════════════════════════════════ */
 function setupResizeHandler() {
@@ -760,6 +961,10 @@ function init() {
         setupGSAPParallax();
         setupSignatureHorizontalScroll();
         setupResizeHandler();
+        setupScrollProgress();
+        setupCursorGlow();
+        setupStorySection();
+        setupHeadingAnimations();
       }
     }
   );
