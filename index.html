@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vajr Jewels — Crafted To Be Remembered</title>
+  <meta name="description" content="Vajr Jewels — A legacy of timeless luxury jewelry. Diamond rings, bridal collections, gold necklaces, waist chains, and signature pieces crafted for life's most precious moments." />
+  <meta property="og:title" content="Vajr Jewels — Crafted To Be Remembered" />
+  <meta property="og:description" content="Timeless luxury jewelry — Diamonds, Bridal Collections, Gold, and Signature Pieces." />
+
+  <!-- Google Fonts — Elegant Corporate Luxury -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    Cormorant Garamond → Refined elegant serif at medium weight (Dior / Valentino DNA)
+    Cinzel             → Traditional Roman authority for logo & labels (regular weight)
+    Raleway            → Corporate-clean premium sans for body copy
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav id="luxury-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Vajr Jewels — Home">
+        <img src="vajr-logo.svg" alt="Vajr Jewels" class="nav-logo-img" width="140" height="66" loading="eager" />
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#collections" class="nav-link">Collections</a></li>
+        <li><a href="#craftsmanship" class="nav-link">Craftsmanship</a></li>
+        <li><a href="#signature" class="nav-link">Signature</a></li>
+        <li><a href="#about" class="nav-link">Heritage</a></li>
+        <li><a href="#showrooms" class="nav-link">Showrooms</a></li>
+      </ul>
+      <a href="#cta" class="nav-cta" id="nav-cta-btn">Discover</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <a href="#collections">Collections</a>
+      <a href="#craftsmanship">Craftsmanship</a>
+      <a href="#signature">Signature</a>
+      <a href="#about">Heritage</a>
+      <a href="#showrooms">Showrooms</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO — FRAME SEQUENCE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="hero-section" aria-label="Hero cinematic showcase">
+    <div id="hero-canvas-wrapper">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Hero Overlay Text -->
+      <div class="hero-content" id="hero-content">
+        <p class="hero-eyebrow" id="hero-eyebrow">Est. 1987 · Multi-Branch Excellence</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="hero-line">Where Every</span>
+          <span class="hero-line hero-italic">Diamond</span>
+          <span class="hero-line">Tells A Story</span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle">Scroll to begin your journey</p>
+        <div class="hero-scroll-indicator" id="hero-scroll-indicator" aria-label="Scroll indicator">
+          <span class="scroll-dot"></span>
+          <span class="scroll-label">Scroll</span>
+        </div>
+      </div>
+
+      <!-- Frame Progress -->
+      <div class="frame-counter" id="frame-counter" aria-live="polite">
+        <span class="frame-count-label">Experience</span>
+        <div class="frame-bar-track">
+          <div class="frame-bar-fill" id="frame-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Particle Transition Canvas -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 2 — FEATURED COLLECTIONS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="collections" class="section collections-section" aria-label="Featured collections">
+    <div class="watermark-bg" aria-hidden="true">ATELIER</div>
+    <div class="vertical-label" aria-hidden="true">Vol. 01 — The Heritage Series</div>
+    <div class="section-inner">
+      <div class="collections-header reveal-block">
+        <p class="section-eyebrow">Our Collections</p>
+        <h2 class="section-title collections-title">Crafted To Be<br /><em>Remembered</em></h2>
+        <p class="section-subtitle">Each piece is a declaration — not just of beauty, but of the soul that shaped it.</p>
+      </div>
+
+      <div class="collections-grid" id="collections-grid">
+        <article class="collection-card reveal-card" id="card-diamond-rings" tabindex="0" aria-label="Diamond Rings collection">
+          <div class="card-image-wrap">
+            <img src="diamond_rings.png" alt="Sparkling diamond solitaire rings collection" class="card-img" loading="lazy" />
+            <div class="card-shimmer"></div>
+          </div>
+          <div class="card-content">
+            <p class="card-label">01 · Diamond Rings</p>
+            <h3 class="card-title">Forever in<br />Every Facet</h3>
+            <a href="#signature" class="card-cta" aria-label="Explore diamond rings collection">Explore →</a>
+          </div>
+        </article>
+
+        <article class="collection-card reveal-card card-tall" id="card-bridal" tabindex="0" aria-label="Bridal collections">
+          <div class="card-image-wrap">
+            <img src="bridal_collection.png" alt="Opulent Indian bridal jewelry set with gold and diamonds" class="card-img" loading="lazy" />
+            <div class="card-shimmer"></div>
+          </div>
+          <div class="card-content">
+            <p class="card-label">02 · Bridal</p>
+            <h3 class="card-title">Begin Your<br />Forever</h3>
+            <a href="#signature" class="card-cta" aria-label="Explore bridal collection">Explore →</a>
+          </div>
+        </article>
+
+        <article class="collection-card reveal-card" id="card-necklaces" tabindex="0" aria-label="Gold necklaces collection">
+          <div class="card-image-wrap">
+            <img src="gold_necklace.png" alt="Layered premium gold necklace collection" class="card-img" loading="lazy" />
+            <div class="card-shimmer"></div>
+          </div>
+          <div class="card-content">
+            <p class="card-label">03 · Gold Necklaces</p>
+            <h3 class="card-title">Liquid Gold<br />Elegance</h3>
+            <a href="#signature" class="card-cta" aria-label="Explore gold necklaces">Explore →</a>
+          </div>
+        </article>
+
+        <article class="collection-card reveal-card" id="card-waist" tabindex="0" aria-label="Waist chains collection">
+          <div class="card-image-wrap">
+            <img src="waist_chain.png" alt="Intricate gold waist chain kamarband" class="card-img" loading="lazy" />
+            <div class="card-shimmer"></div>
+          </div>
+          <div class="card-content">
+            <p class="card-label">04 · Waist Chains</p>
+            <h3 class="card-title">Adorned at<br />Every Curve</h3>
+            <a href="#signature" class="card-cta" aria-label="Explore waist chains">Explore →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 3 — CRAFTSMANSHIP -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="craftsmanship" class="section craft-section" aria-label="Our craftsmanship">
+    <div class="watermark-bg" aria-hidden="true">CRAFT</div>
+    <div class="craft-inner">
+      <div class="craft-image-col reveal-image">
+        <div class="craft-image-frame">
+          <img src="craftsmanship_hero.png" alt="Master jeweler setting a diamond with precision tools" class="craft-img" loading="lazy" />
+          <div class="craft-image-overlay"></div>
+          <div class="craft-badge">
+            <span class="craft-badge-num">35+</span>
+            <span class="craft-badge-text">Years of<br />Mastery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="craft-text-col glass-panel">
+        <p class="section-eyebrow reveal-line">The Art Behind the Art</p>
+        <h2 class="section-title craft-title reveal-line">
+          Every Piece<br />Begins as a<br /><em>Promise</em>
+        </h2>
+        <p class="craft-body reveal-line">
+          From hand-selecting flawless diamonds to the final setting stroke — our master craftsmen pour decades of tradition into each creation. No shortcuts. No compromises. Only devotion to the extraordinary.
+        </p>
+
+        <div class="craft-pillars">
+          <div class="craft-pillar reveal-pillar">
+            <div class="pillar-icon">◈</div>
+            <div class="pillar-content">
+              <h4>Diamond Selection</h4>
+              <p>Only the finest stones — graded, certified, and selected by expert gemologists.</p>
+            </div>
+          </div>
+          <div class="craft-pillar reveal-pillar">
+            <div class="pillar-icon">✦</div>
+            <div class="pillar-content">
+              <h4>Hand Crafting</h4>
+              <p>Every setting, every curve, every prong — shaped by skilled hands, not machines.</p>
+            </div>
+          </div>
+          <div class="craft-pillar reveal-pillar">
+            <div class="pillar-icon">⬡</div>
+            <div class="pillar-content">
+              <h4>Precision Finishing</h4>
+              <p>Polished to a mirror-like perfection. Inspected under magnification before leaving our atelier.</p>
+            </div>
+          </div>
+          <div class="craft-pillar reveal-pillar">
+            <div class="pillar-icon">❋</div>
+            <div class="pillar-content">
+              <h4>Traditional Artistry</h4>
+              <p>Ancient Indian jewelry-making techniques merged with modern luxury design sensibilities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 4 — SIGNATURE COLLECTION (Horizontal) -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="signature" class="section signature-section" aria-label="Signature collection">
+    <div class="signature-header reveal-block">
+      <p class="section-eyebrow">Exclusively Yours</p>
+      <h2 class="section-title">The Signature<br /><em>Collection</em></h2>
+    </div>
+
+    <div class="signature-track-wrapper" id="signature-track-wrapper">
+      <div class="signature-track" id="signature-track">
+
+        <div class="sig-card" id="sig-card-1">
+          <div class="sig-card-inner">
+            <div class="sig-card-image">
+              <img src="diamond_rings.png" alt="Diamond solitaire ring" loading="lazy" />
+              <div class="sig-card-glow"></div>
+            </div>
+            <div class="sig-card-info">
+              <p class="sig-card-number">001</p>
+              <h3 class="sig-card-title">The Eternity Ring</h3>
+              <p class="sig-card-desc">A round brilliant diamond in a platinum six-prong setting. Timeless simplicity at its peak.</p>
+              <span class="sig-card-tag">Diamond · Platinum</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sig-card" id="sig-card-2">
+          <div class="sig-card-inner">
+            <div class="sig-card-image">
+              <img src="bridal_collection.png" alt="Royal bridal jewelry set" loading="lazy" />
+              <div class="sig-card-glow"></div>
+            </div>
+            <div class="sig-card-info">
+              <p class="sig-card-number">002</p>
+              <h3 class="sig-card-title">The Royal Bride</h3>
+              <p class="sig-card-desc">An heirloom-worthy bridal set — layered necklace, chandelier earrings, and matching maang tikka.</p>
+              <span class="sig-card-tag">Gold · Diamonds · Pearls</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sig-card" id="sig-card-3">
+          <div class="sig-card-inner">
+            <div class="sig-card-image">
+              <img src="gold_necklace.png" alt="Layered gold necklace" loading="lazy" />
+              <div class="sig-card-glow"></div>
+            </div>
+            <div class="sig-card-info">
+              <p class="sig-card-number">003</p>
+              <h3 class="sig-card-title">The Golden Cascade</h3>
+              <p class="sig-card-desc">Seven layered gold chains in varying textures — a statement of effortless luxury.</p>
+              <span class="sig-card-tag">22K Gold · Handcrafted</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sig-card" id="sig-card-4">
+          <div class="sig-card-inner">
+            <div class="sig-card-image">
+              <img src="waist_chain.png" alt="Intricate gold waist chain" loading="lazy" />
+              <div class="sig-card-glow"></div>
+            </div>
+            <div class="sig-card-info">
+              <p class="sig-card-number">004</p>
+              <h3 class="sig-card-title">The Kamarbandh</h3>
+              <p class="sig-card-desc">A masterpiece of traditional kaarigaree — intricate filigree work in 22K gold with ruby and pearl accents.</p>
+              <span class="sig-card-tag">22K Gold · Ruby · Pearls</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sig-card" id="sig-card-5">
+          <div class="sig-card-inner">
+            <div class="sig-card-image">
+              <img src="collection_featured.png" alt="Featured luxury jewelry collection" loading="lazy" />
+              <div class="sig-card-glow"></div>
+            </div>
+            <div class="sig-card-info">
+              <p class="sig-card-number">005</p>
+              <h3 class="sig-card-title">The Treasury Set</h3>
+              <p class="sig-card-desc">The complete luxury ensemble — rings, necklace, earrings, and bangles for the woman who commands every room.</p>
+              <span class="sig-card-tag">Full Set · Multi-Stone</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 5 — ABOUT / HERITAGE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="about" class="section about-section" aria-label="About our heritage">
+    <div class="about-bg-text" aria-hidden="true">LEGACY</div>
+    <div class="about-inner">
+      <div class="about-text-col">
+        <p class="section-eyebrow reveal-line">Our Heritage</p>
+        <h2 class="section-title about-title reveal-line">
+          Trusted Across<br />Generations,<br /><em>Loved Forever</em>
+        </h2>
+        <p class="about-body reveal-line">
+          From a single atelier in the heart of the city to a network of luxury showrooms — Vajr Jewels has been the choice of discerning families for over three decades. Each branch carries the same uncompromising promise: craftsmanship that endures, beauty that transcends time.
+        </p>
+      </div>
+
+      <div class="about-stats-col">
+        <div class="stat-card reveal-stat" id="stat-years">
+          <div class="stat-number">
+            <span class="stat-count" data-target="35">0</span>
+            <span class="stat-plus">+</span>
+          </div>
+          <div class="stat-label">Years of Trust</div>
+          <div class="stat-sub">Building legacies since 1987</div>
+        </div>
+        <div class="stat-card reveal-stat" id="stat-branches">
+          <div class="stat-number">
+            <span class="stat-count" data-target="12">0</span>
+            <span class="stat-plus">+</span>
+          </div>
+          <div class="stat-label">Luxury Showrooms</div>
+          <div class="stat-sub">Across multiple cities</div>
+        </div>
+        <div class="stat-card reveal-stat" id="stat-customers">
+          <div class="stat-number">
+            <span class="stat-count" data-target="50000">0</span>
+            <span class="stat-plus">+</span>
+          </div>
+          <div class="stat-label">Happy Families</div>
+          <div class="stat-sub">And counting every day</div>
+        </div>
+        <div class="stat-card reveal-stat" id="stat-pieces">
+          <div class="stat-number">
+            <span class="stat-count" data-target="100000">0</span>
+            <span class="stat-plus">+</span>
+          </div>
+          <div class="stat-label">Pieces Created</div>
+          <div class="stat-sub">Each one, one of a kind</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 6 — SHOWROOMS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="showrooms" class="section showrooms-section" aria-label="Our showrooms">
+    <div class="section-inner">
+      <div class="showrooms-header reveal-block">
+        <p class="section-eyebrow">Where to Find Us</p>
+        <h2 class="section-title">Visit Our<br /><em>Showrooms</em></h2>
+        <p class="section-subtitle">Step into our world. Each showroom is a sanctuary of beauty, designed to make every visit an experience.</p>
+      </div>
+
+      <div class="showrooms-grid">
+        <article class="showroom-card reveal-card" id="showroom-flagship" tabindex="0" aria-label="Flagship Showroom Banjara Hills">
+          <div class="showroom-img-wrap">
+            <img src="showroom.png" alt="Luxurious Vajr Jewels flagship showroom interior" class="showroom-img" loading="lazy" />
+            <div class="showroom-overlay">
+              <span class="showroom-overlay-text">Step Inside →</span>
+            </div>
+          </div>
+          <div class="showroom-info">
+            <div class="showroom-badge">Flagship</div>
+            <h3 class="showroom-name">Banjara Hills</h3>
+            <p class="showroom-address">Road No. 12, Banjara Hills,<br />Hyderabad — 500034</p>
+            <p class="showroom-hours">Mon – Sun: 10:00 AM – 9:00 PM</p>
+            <a href="tel:+914012345678" class="showroom-phone">+91 40 1234 5678</a>
+          </div>
+        </article>
+
+        <article class="showroom-card reveal-card" id="showroom-jubilee" tabindex="0" aria-label="Jubilee Hills Showroom">
+          <div class="showroom-img-wrap">
+            <img src="showroom.png" alt="Vajr Jewels Jubilee Hills showroom" class="showroom-img" loading="lazy" />
+            <div class="showroom-overlay">
+              <span class="showroom-overlay-text">Step Inside →</span>
+            </div>
+          </div>
+          <div class="showroom-info">
+            <div class="showroom-badge">City Centre</div>
+            <h3 class="showroom-name">Jubilee Hills</h3>
+            <p class="showroom-address">Plot 92, Jubilee Hills,<br />Hyderabad — 500033</p>
+            <p class="showroom-hours">Mon – Sun: 10:00 AM – 9:00 PM</p>
+            <a href="tel:+914023456789" class="showroom-phone">+91 40 2345 6789</a>
+          </div>
+        </article>
+
+        <article class="showroom-card reveal-card" id="showroom-gachibowli" tabindex="0" aria-label="Gachibowli Tech City Showroom">
+          <div class="showroom-img-wrap">
+            <img src="showroom.png" alt="Vajr Jewels Gachibowli showroom" class="showroom-img" loading="lazy" />
+            <div class="showroom-overlay">
+              <span class="showroom-overlay-text">Step Inside →</span>
+            </div>
+          </div>
+          <div class="showroom-info">
+            <div class="showroom-badge">Tech City</div>
+            <h3 class="showroom-name">Gachibowli</h3>
+            <p class="showroom-address">DLF Cybercity, Gachibowli,<br />Hyderabad — 500032</p>
+            <p class="showroom-hours">Mon – Sun: 10:00 AM – 9:00 PM</p>
+            <a href="tel:+914034567890" class="showroom-phone">+91 40 3456 7890</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FINAL CTA SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="cta" class="section cta-section" aria-label="Call to action">
+    <div class="cta-bg-pattern" aria-hidden="true"></div>
+    <canvas id="cta-particle-canvas" aria-hidden="true"></canvas>
+    <div class="cta-inner">
+      <p class="section-eyebrow cta-eyebrow reveal-line">A Timeless Promise</p>
+      <h2 class="cta-title reveal-line">
+        Jewelry Beyond<br /><em>Generations</em>
+      </h2>
+      <p class="cta-subtitle reveal-line">
+        Discover timeless elegance crafted for life's most precious moments.<br />
+        Because some things are worth forever.
+      </p>
+      <div class="cta-buttons reveal-line">
+        <a href="#collections" class="btn-primary" id="cta-explore-btn">
+          <span>Explore Collections</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#showrooms" class="btn-secondary" id="cta-showroom-btn">
+          <span>Visit Showroom</span>
+        </a>
+      </div>
+
+      <div class="cta-seal" aria-label="Premium quality seal">
+        <div class="seal-ring">
+          <div class="seal-inner">
+            <span class="seal-icon">◈</span>
+          </div>
+          <svg class="seal-text-svg" viewBox="0 0 160 160" aria-hidden="true">
+            <path id="seal-circle" d="M 80 80 m -60 0 a 60 60 0 1 1 120 0 a 60 60 0 1 1 -120 0" fill="none"/>
+            <text font-size="11" fill="#C9A84C" font-family="'Cormorant Garamond', serif" letter-spacing="4">
+              <textPath href="#seal-circle">VAJR JEWELS · EST. 1987 · LUXURY · HERITAGE ·</textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════ -->
+  <footer class="luxury-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-logo-text">VAJR JEWELS</p>
+        <p class="footer-tagline">Crafted To Be Remembered</p>
+      </div>
+      <div class="footer-links">
+        <a href="#collections">Collections</a>
+        <a href="#craftsmanship">Craftsmanship</a>
+        <a href="#about">Heritage</a>
+        <a href="#showrooms">Showrooms</a>
+      </div>
+      <p class="footer-copy">© 2025 Vajr Jewels. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
