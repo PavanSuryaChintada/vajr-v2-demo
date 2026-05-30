@@ -2496,7 +2496,8 @@ img {
 ════════════════════════════════════════ */
 .hsv-container {
   position: relative;
-  height: 500vw;
+  /* 100vh = pinned viewport height + (5-1)×100vw = scroll distance for 4 slides */
+  height: calc(100vh + 400vw);
   background: #030303;
 }
 
