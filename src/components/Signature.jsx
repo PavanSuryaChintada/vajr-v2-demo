@@ -71,7 +71,7 @@ const Signature = () => {
       const panels = gsap.utils.toArray('.hsv-slide', track);
       const totalWidth = panels.length * window.innerWidth;
 
-      // Animate the track horizontally while pinned
+      // Pin the track and scroll it horizontally
       gsap.to(track, {
         x: () => -(totalWidth - window.innerWidth),
         ease: 'none',
@@ -86,18 +86,17 @@ const Signature = () => {
         },
       });
 
-      // Animate each slide's content in as it enters
+      // Per-slide content reveals and image parallax
       panels.forEach((panel, i) => {
         const eyebrow = panel.querySelector('.hsv-eyebrow');
-        const title = panel.querySelector('.hsv-title');
-        const body = panel.querySelector('.hsv-body');
-        const stat = panel.querySelector('.hsv-stat-box');
-        const cta = panel.querySelector('.hsv-cta');
-        const img = panel.querySelector('.hsv-slide-image');
+        const title   = panel.querySelector('.hsv-title');
+        const body    = panel.querySelector('.hsv-body');
+        const stat    = panel.querySelector('.hsv-stat-box');
+        const cta     = panel.querySelector('.hsv-cta');
+        const img     = panel.querySelector('.hsv-slide-image');
 
         const enterOffset = i * window.innerWidth;
 
-        // Slide image parallax
         if (img) {
           gsap.fromTo(img,
             { scale: 1.12 },
@@ -107,7 +106,7 @@ const Signature = () => {
               scrollTrigger: {
                 trigger: container,
                 start: () => `top top+=${enterOffset * 0.8}`,
-                end: () => `top top+=${enterOffset + window.innerWidth}`,
+                end:   () => `top top+=${enterOffset + window.innerWidth}`,
                 scrub: 1.5,
                 invalidateOnRefresh: true,
               },
@@ -115,9 +114,7 @@ const Signature = () => {
           );
         }
 
-        // Text reveal
-        const els = [eyebrow, title, body, stat, cta].filter(Boolean);
-        els.forEach((el, j) => {
+        [eyebrow, title, body, stat, cta].filter(Boolean).forEach((el, j) => {
           gsap.fromTo(el,
             { opacity: 0, y: 36 },
             {
@@ -129,7 +126,7 @@ const Signature = () => {
               scrollTrigger: {
                 trigger: container,
                 start: () => `top top+=${Math.max(0, enterOffset - window.innerWidth * 0.3)}`,
-                end: () => `top top+=${enterOffset + window.innerWidth * 0.5}`,
+                end:   () => `top top+=${enterOffset + window.innerWidth * 0.5}`,
                 toggleActions: 'play none none reverse',
                 invalidateOnRefresh: true,
               },
@@ -149,30 +146,41 @@ const Signature = () => {
       className="hsv-container"
       aria-label="Brilliant Cuts — Horizontal Story"
     >
-      {/* Progress bar */}
-      <div className="hsv-progress-track" aria-hidden="true">
-        {slides.map((s, i) => (
-          <div key={s.id} className="hsv-progress-dot" style={{ animationDelay: `${i * 0.15}s` }} />
-        ))}
-      </div>
-
-      {/* Chapter counter */}
-      <div className="hsv-chapter-counter" aria-hidden="true">
-        {slides.map((_, i) => (
-          <span key={i} className="hsv-dot" />
-        ))}
-      </div>
-
-      {/* Horizontal track */}
+      {/*
+        Everything lives inside the sticky track so overlay elements
+        (progress dots, chapter counter, scroll hint) stay within
+        the pinned viewport and never leak into the space below.
+      */}
       <div ref={trackRef} className="hsv-track">
-        {slides.map((slide) => (
+
+        {/* Progress dots */}
+        <div className="hsv-progress-track" aria-hidden="true">
+          {slides.map((s) => (
+            <div key={s.id} className="hsv-progress-dot" />
+          ))}
+        </div>
+
+        {/* Chapter dots (top-right) */}
+        <div className="hsv-chapter-counter" aria-hidden="true">
+          {slides.map((_, i) => (
+            <span key={i} className="hsv-dot" />
+          ))}
+        </div>
+
+        {/* Scroll hint */}
+        <div className="hsv-scroll-hint" aria-hidden="true">
+          <span className="hsv-scroll-arrow">→</span>
+          <span className="hsv-scroll-text">Scroll to explore</span>
+        </div>
+
+        {/* Slides */}
+        {slides.map((slide, idx) => (
           <div
             key={slide.id}
             id={slide.id}
             className={`hsv-slide hsv-slide--${slide.align}`}
             aria-label={slide.eyebrow}
           >
-            {/* Background image */}
             <div className="hsv-slide-bg">
               <img
                 src={slide.image}
@@ -182,7 +190,6 @@ const Signature = () => {
               <div className="hsv-slide-overlay" />
             </div>
 
-            {/* Text Content */}
             <div className="hsv-slide-content">
               <p className="hsv-eyebrow">{slide.eyebrow}</p>
 
@@ -204,24 +211,23 @@ const Signature = () => {
                 <a href="#bridal" className="hsv-cta" id="hsv-cta-btn">
                   Explore The Vault
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M5 12H19M19 12L12 5M19 12L12 19"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </a>
               )}
             </div>
 
-            {/* Slide number */}
             <div className="hsv-slide-num" aria-hidden="true">
-              {String(slides.indexOf(slide) + 1).padStart(2, '0')}
+              {String(idx + 1).padStart(2, '0')}
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Scroll hint on first slide */}
-      <div className="hsv-scroll-hint" aria-hidden="true">
-        <span className="hsv-scroll-arrow">→</span>
-        <span className="hsv-scroll-text">Scroll to explore</span>
       </div>
     </div>
   );
