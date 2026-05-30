@@ -978,3 +978,39 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+/* ════════════════════════════════════════
+   TARGET SECTIONS REVEAL ANIMATION
+════════════════════════════════════════ */
+function setupTargetReveal() {
+  const elementsToReveal = document.querySelectorAll('.target-heading, .target-text, .target-about-image-wrap, .target-collection-card, .target-bridal-heading, .target-bridal-text, .target-btn, .target-craft-item');
+  
+  // Set initial state
+  elementsToReveal.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  elementsToReveal.forEach(el => observer.observe(el));
+}
+
+// Ensure this runs when the page loads
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupTargetReveal);
+} else {
+  setupTargetReveal();
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vajr Jewels — Crafted To Be Remembered</title>
+  <meta name="description" content="Vajr Jewels — A legacy of timeless luxury jewelry. Diamond rings, bridal collections, gold necklaces, waist chains, and signature pieces crafted for life's most precious moments." />
+  <meta property="og:title" content="Vajr Jewels — Crafted To Be Remembered" />
+  <meta property="og:description" content="Timeless luxury jewelry — Diamonds, Bridal Collections, Gold, and Signature Pieces." />
+
+  <!-- Google Fonts — Elegant Corporate Luxury -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    Cormorant Garamond → Refined elegant serif at medium weight (Dior / Valentino DNA)
+    Cinzel             → Traditional Roman authority for logo & labels (regular weight)
+    Raleway            → Corporate-clean premium sans for body copy
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar (left edge) -->
+  <div id="scroll-progress" aria-hidden="true">
+    <div id="scroll-progress-fill"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav id="luxury-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Vajr Jewels — Home">
+        <img src="vajr-logo.svg" alt="Vajr Jewels" class="nav-logo-img" width="140" height="66" loading="eager" />
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#collections" class="nav-link">Collections</a></li>
+        <li><a href="#craftsmanship" class="nav-link">Craftsmanship</a></li>
+        <li><a href="#signature" class="nav-link">Signature</a></li>
+        <li><a href="#about" class="nav-link">Heritage</a></li>
+        <li><a href="#showrooms" class="nav-link">Showrooms</a></li>
+      </ul>
+      <a href="#cta" class="nav-cta" id="nav-cta-btn">Discover</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <a href="#collections">Collections</a>
+      <a href="#craftsmanship">Craftsmanship</a>
+      <a href="#signature">Signature</a>
+      <a href="#about">Heritage</a>
+      <a href="#showrooms">Showrooms</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO — FRAME SEQUENCE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="hero-section" aria-label="Hero cinematic showcase">
+    <div id="hero-canvas-wrapper">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Hero Overlay Text -->
+      <div class="hero-content" id="hero-content">
+        <p class="hero-eyebrow" id="hero-eyebrow">Est. 1987 · Multi-Branch Excellence</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="hero-line">Where Every</span>
+          <span class="hero-line hero-italic">Diamond</span>
+          <span class="hero-line">Tells A Story</span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle">Scroll to begin your journey</p>
+        <div class="hero-scroll-indicator" id="hero-scroll-indicator" aria-label="Scroll indicator">
+          <span class="scroll-dot"></span>
+          <span class="scroll-label">Scroll</span>
+        </div>
+      </div>
+
+      <!-- Frame Progress -->
+      <div class="frame-counter" id="frame-counter" aria-live="polite">
+        <span class="frame-count-label">Experience</span>
+        <div class="frame-bar-track">
+          <div class="frame-bar-fill" id="frame-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Particle Transition Canvas -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  
+  <!-- NEW SECTIONS -->
+  <section id="about" class="target-section target-about">
+    <div class="target-container">
+      <div class="target-about-grid">
+        <div class="target-about-content">
+          <div class="target-gold-line"></div>
+          <h2 class="target-heading">
+            A Legacy of <br />
+            <span class="target-gold-italic">Unparalleled Craft</span>
+          </h2>
+          <p class="target-text">
+            For generations, VAJR JEWELS has been the custodian of India's most
+            extraordinary gems. We do not merely create jewelry; we sculpt
+            heirlooms. Every diamond is meticulously selected, every emerald
+            ethically sourced, and every setting handcrafted by master artisans
+            whose skills have been honed over decades.
+          </p>
+          <p class="target-text">
+            Our pieces are born from a dialogue between ancient heritage and
+            contemporary brilliance. When you wear VAJR, you wear a testament to
+            eternity.
+          </p>
+          <div class="target-about-link-wrap">
+            <a href="#craftsmanship" class="target-link">
+              Discover Our Process
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="target-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="target-about-image-wrap">
+          <div class="target-about-image-inner">
+            <img alt="Heritage Craftsmanship" src="craftsmanship_hero.png" class="target-img-cover" />
+            <div class="target-image-overlay"></div>
+          </div>
+          <div class="target-about-quote">
+            <p>"Perfection in every facet."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="collections" class="target-section target-collections">
+    <div class="target-container">
+      <div class="target-section-header">
+        <span class="target-subheading">Curated Brilliance</span>
+        <h2 class="target-heading-center">Featured Collections</h2>
+      </div>
+      <div class="target-collections-grid">
+        <!-- Card 1 -->
+        <div class="target-collection-card group">
+          <div class="target-card-bg">
+            <img alt="Diamond Collection" src="diamond_rings.png" class="target-img-cover" />
+            <div class="target-card-gradient"></div>
+          </div>
+          <div class="target-card-border"></div>
+          <div class="target-card-content">
+            <h3>Diamond Collection</h3>
+            <span class="target-card-explore">Explore &rarr;</span>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="target-collection-card group">
+          <div class="target-card-bg">
+            <img alt="Emerald Collection" src="collection_featured.png" class="target-img-cover" />
+            <div class="target-card-gradient"></div>
+          </div>
+          <div class="target-card-border"></div>
+          <div class="target-card-content">
+            <h3>Emerald Collection</h3>
+            <span class="target-card-explore">Explore &rarr;</span>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="target-collection-card group">
+          <div class="target-card-bg">
+            <img alt="Bridal Collection" src="bridal_collection.png" class="target-img-cover" />
+            <div class="target-card-gradient"></div>
+          </div>
+          <div class="target-card-border"></div>
+          <div class="target-card-content">
+            <h3>Bridal Collection</h3>
+            <span class="target-card-explore">Explore &rarr;</span>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="target-collection-card group">
+          <div class="target-card-bg">
+            <img alt="Heritage Collection" src="gold_necklace.png" class="target-img-cover" />
+            <div class="target-card-gradient"></div>
+          </div>
+          <div class="target-card-border"></div>
+          <div class="target-card-content">
+            <h3>Heritage Collection</h3>
+            <span class="target-card-explore">Explore &rarr;</span>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="target-collection-card group">
+          <div class="target-card-bg">
+            <img alt="Daily Luxury" src="waist_chain.png" class="target-img-cover" />
+            <div class="target-card-gradient"></div>
+          </div>
+          <div class="target-card-border"></div>
+          <div class="target-card-content">
+            <h3>Daily Luxury</h3>
+            <span class="target-card-explore">Explore &rarr;</span>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="target-collection-card group">
+          <div class="target-card-bg">
+            <img alt="Signature Collection" src="showroom.png" class="target-img-cover" />
+            <div class="target-card-gradient"></div>
+          </div>
+          <div class="target-card-border"></div>
+          <div class="target-card-content">
+            <h3>Signature Collection</h3>
+            <span class="target-card-explore">Explore &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bridal" class="target-section target-bridal">
+    <div class="target-bridal-bg">
+      <img alt="Bridal Collection" src="bridal_collection.png" class="target-img-cover" />
+      <div class="target-bridal-overlay"></div>
+    </div>
+    <div class="target-bridal-content">
+      <h2 class="target-bridal-heading">
+        The Bridal <br /><span class="target-gold-italic">Collection</span>
+      </h2>
+      <p class="target-bridal-text">
+        For the day you become a legend. Exquisite sets designed to echo through
+        generations.
+      </p>
+      <a href="#appointment" class="target-btn">Explore Bridal</a>
+    </div>
+  </section>
+
+  <section id="craftsmanship" class="target-section target-craftsmanship">
+    <div class="target-container">
+      <div class="target-section-header">
+        <span class="target-subheading">The Process</span>
+        <h2 class="target-heading-center">Artistry in Motion</h2>
+      </div>
+      <div class="target-craft-grid">
+        <div class="target-craft-line"></div>
+        <div class="target-craft-item">
+          <div class="target-craft-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="target-icon">
+              <path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"></path>
+              <path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"></path>
+              <path d="m2.3 2.3 7.286 7.286"></path>
+              <circle cx="11" cy="11" r="2"></circle>
+            </svg>
+          </div>
+          <h3>The Vision</h3>
+          <p>Every masterpiece begins as a hand-drawn sketch, inspired by nature, architecture, and heritage.</p>
+        </div>
+        <div class="target-craft-item">
+          <div class="target-craft-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="target-icon">
+              <path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41l-7.59-7.59a2.41 2.41 0 0 0-3.41 0Z"></path>
+            </svg>
+          </div>
+          <h3>Stone Selection</h3>
+          <p>We source only the top 1% of diamonds and gemstones, rigorously checked for cut, color, clarity, and carat.</p>
+        </div>
+        <div class="target-craft-item">
+          <div class="target-craft-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="target-icon">
+              <path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9"></path>
+              <path d="m18 15 4-4"></path>
+              <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"></path>
+            </svg>
+          </div>
+          <h3>Master Crafting</h3>
+          <p>Artisans with decades of experience mold gold and platinum, setting each stone by hand with microscopic precision.</p>
+        </div>
+        <div class="target-craft-item">
+          <div class="target-craft-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="target-icon">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+          </div>
+          <h3>Perfection</h3>
+          <p>A rigorous 50-point inspection ensures the final piece meets the uncompromising VAJR standard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="target-footer">
+    <div class="target-container">
+      <div class="target-footer-grid">
+        <div class="target-footer-brand">
+          <div class="target-footer-logo">
+            <span class="target-logo-title">VAJR</span>
+            <div class="target-logo-line"></div>
+            <span class="target-logo-subtitle">JEWELS</span>
+          </div>
+          <p class="target-footer-text">
+            Crafting eternity since 1985. The premier destination for ultra-luxury
+            Indian fine jewelry, specializing in rare diamonds and majestic
+            emeralds.
+          </p>
+        </div>
+        <div class="target-footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#bridal">Bridal</a></li>
+            <li><a href="#craftsmanship">High Jewelry</a></li>
+            <li><a href="#about">Our Heritage</a></li>
+          </ul>
+        </div>
+        <div class="target-footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li>Boutique: Taj Mansingh, New Delhi</li>
+            <li>+91 999 999 9999</li>
+            <li>concierge@vajrjewels.com</li>
+            <li><a href="#" class="target-gold-text">@vajrjewelsofficial</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="target-footer-divider"></div>
+      <div class="target-footer-bottom">
+        <p>&copy; 2025 VAJR JEWELS Private Limited. All Rights Reserved.</p>
+        <div class="target-footer-legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+\n\n<script src="main.js"></script>\n</body>\n</html>
