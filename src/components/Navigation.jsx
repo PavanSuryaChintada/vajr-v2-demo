@@ -29,9 +29,10 @@ const Navigation = () => {
           </a>
           <ul className="nav-links" role="list">
             <li><a href="#collections" className="nav-link">Collections</a></li>
+            <li><a href="#signature" className="nav-link">Signature</a></li>
             <li><a href="#craftsmanship" className="nav-link">Craftsmanship</a></li>
             <li><a href="#about" className="nav-link">Heritage</a></li>
-            <li><a href="#bridal" className="nav-link">Bridal</a></li>
+            <li><a href="#showrooms" className="nav-link">Showrooms</a></li>
           </ul>
           <a href="#about" className="nav-cta" id="nav-cta-btn">Discover</a>
           <button 
@@ -46,9 +47,11 @@ const Navigation = () => {
         </div>
         <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`} id="mobile-menu" aria-hidden={!mobileOpen}>
           <a href="#collections" onClick={closeMenu}>Collections</a>
+          <a href="#signature" onClick={closeMenu}>Signature</a>
           <a href="#craftsmanship" onClick={closeMenu}>Craftsmanship</a>
           <a href="#about" onClick={closeMenu}>Heritage</a>
           <a href="#bridal" onClick={closeMenu}>Bridal</a>
+          <a href="#showrooms" onClick={closeMenu}>Showrooms</a>
         </div>
       </nav>
       {/* Scroll progress bar (left edge) */}

@@ -4,8 +4,10 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Collections from './components/Collections';
+import Signature from './components/Signature';
 import Bridal from './components/Bridal';
 import Craftsmanship from './components/Craftsmanship';
+import Showrooms from './components/Showrooms';
 import Footer from './components/Footer';
 
 // Use the newly migrated Vanilla CSS
@@ -77,8 +79,10 @@ function App() {
         <Hero />
         <About />
         <Collections />
+        <Signature />
         <Bridal />
         <Craftsmanship />
+        <Showrooms />
       </main>
       <Footer />
     </>
