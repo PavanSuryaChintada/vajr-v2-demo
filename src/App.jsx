@@ -4,7 +4,6 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Collections from './components/Collections';
-import Signature from './components/Signature';
 import Bridal from './components/Bridal';
 import Craftsmanship from './components/Craftsmanship';
 import Showrooms from './components/Showrooms';
@@ -79,7 +78,6 @@ function App() {
         <Hero />
         <About />
         <Collections />
-        <Signature />
         <Bridal />
         <Craftsmanship />
         <Showrooms />

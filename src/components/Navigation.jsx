@@ -29,7 +29,6 @@ const Navigation = () => {
           </a>
           <ul className="nav-links" role="list">
             <li><a href="#collections" className="nav-link">Collections</a></li>
-            <li><a href="#signature" className="nav-link">Signature</a></li>
             <li><a href="#craftsmanship" className="nav-link">Craftsmanship</a></li>
             <li><a href="#about" className="nav-link">Heritage</a></li>
             <li><a href="#showrooms" className="nav-link">Showrooms</a></li>
