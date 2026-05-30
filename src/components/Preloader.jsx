@@ -23,7 +23,7 @@ const Preloader = () => {
     <div id="loading-screen" style={{ transition: 'opacity 0.5s ease' }}>
       <div className="preloader-inner">
         <div className="preloader-logo-entrance">
-          <img src="/vajr-logo.svg" alt="Vajr Jewels" className="preloader-logo-pulse" />
+          <img src="/vajr-logo-new.jpg" alt="Vajr Jewels" className="preloader-logo-pulse" style={{ mixBlendMode: 'screen' }} />
         </div>
       </div>
     </div>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" fill="none">
+  <!-- Diamond outline with gaps for the letters -->
+  <path d="M 40 100 L 80 40 L 250 40 L 270 70 M 270 120 L 250 150 L 165 150 L 80 150 L 40 100" stroke="#521520" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M 120 40 L 210 40 M 100 70 L 60 130" stroke="#521520" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- VAJR wordmark -->
+  <text x="100" y="130" font-family="'Jost', 'Inter', sans-serif" font-size="90" font-weight="300" fill="#521520" letter-spacing="-2">VAJR</text>
+  
+  <!-- EWELS wordmark -->
+  <text x="270" y="130" font-family="'Jost', 'Inter', sans-serif" font-size="45" font-weight="300" fill="#521520" letter-spacing="4">EWELS</text>
+</svg>

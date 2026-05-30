@@ -24,8 +24,8 @@ const Navigation = () => {
     <>
       <nav id="luxury-nav" className={scrolled ? 'scrolled' : ''} role="navigation" aria-label="Main navigation">
         <div className="nav-inner">
-          <a href="#" className="nav-logo" aria-label="Vajr Jewels — Home">
-            <img src="/vajr-logo.svg" alt="Vajr Jewels" className="nav-logo-img" width="140" height="66" loading="eager" />
+          <a href="#" className="nav-logo" aria-label="Vajr Jewels Home">
+            <img src="/vajr-logo-new.jpg" alt="Vajr Jewels" className="nav-logo-img" style={{ mixBlendMode: 'darken' }} width="140" height="66" loading="eager" />
           </a>
           <ul className="nav-links" role="list">
             <li><a href="#collections" className="nav-link">Collections</a></li>
