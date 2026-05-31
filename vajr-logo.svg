@@ -1,34 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 200" fill="none">
-  <!-- Diamond outline shape -->
-  <g stroke="#C9A84C" stroke-width="1.8" fill="none" stroke-linejoin="round">
-    <!-- Diamond gem outline: top flat edge, angled sides, bottom point -->
-    <!-- Top edge (girdle) -->
-    <polyline points="28,72 72,38 148,38" />
-    <!-- Right side of top -->
-    <polyline points="148,38 188,72" />
-    <!-- Left bottom facet -->
-    <line x1="28" y1="72" x2="108" y2="162" />
-    <!-- Right bottom facet -->
-    <line x1="188" y1="72" x2="108" y2="162" />
-    <!-- Bottom centre point -->
-    <!-- Inner table line (top) -->
-    <line x1="52" y1="72" x2="164" y2="72" />
-    <!-- Inner left diagonal -->
-    <line x1="52" y1="72" x2="108" y2="138" />
-    <!-- Inner right diagonal -->
-    <line x1="164" y1="72" x2="108" y2="138" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 132" fill="none">
+
+  <!-- ══ DIAMOND GEM ICON (side-view brilliant cut) ══ -->
+  <g transform="translate(10, 10)" stroke="#C9A84C" fill="none">
+    <!-- Outer diamond silhouette -->
+    <path d="M 36 0 L 72 34 L 36 110 L 0 34 Z"
+          stroke-width="1.6" stroke-linejoin="round"/>
+    <!-- Girdle equator line -->
+    <line x1="0"  y1="34" x2="72" y2="34" stroke-width="0.9" opacity="0.55"/>
+    <!-- Upper table (flat top face) -->
+    <line x1="16" y1="17" x2="56" y2="17" stroke-width="0.9" opacity="0.55"/>
+    <!-- Upper crown facets -->
+    <line x1="0"  y1="34" x2="16" y2="17" stroke-width="0.75" opacity="0.42"/>
+    <line x1="72" y1="34" x2="56" y2="17" stroke-width="0.75" opacity="0.42"/>
+    <line x1="16" y1="17" x2="36" y2="0"  stroke-width="0.75" opacity="0.42"/>
+    <line x1="56" y1="17" x2="36" y2="0"  stroke-width="0.75" opacity="0.42"/>
+    <!-- Lower pavilion facets -->
+    <line x1="16" y1="34" x2="36" y2="110" stroke-width="0.7" opacity="0.28"/>
+    <line x1="56" y1="34" x2="36" y2="110" stroke-width="0.7" opacity="0.28"/>
   </g>
 
-  <!-- VAJR wordmark — positioned overlapping the diamond -->
-  <!-- V -->
-  <text x="42" y="128" font-family="'Cinzel', 'Trajan Pro', Georgia, serif" font-size="52" font-weight="400" fill="#C9A84C" letter-spacing="-1">V</text>
-  <!-- A -->
-  <text x="82" y="128" font-family="'Cinzel', 'Trajan Pro', Georgia, serif" font-size="52" font-weight="400" fill="#C9A84C" letter-spacing="-1">A</text>
-  <!-- J -->
-  <text x="120" y="148" font-family="'Cinzel', 'Trajan Pro', Georgia, serif" font-size="52" font-weight="400" fill="#C9A84C" letter-spacing="-1">J</text>
-  <!-- R -->
-  <text x="152" y="128" font-family="'Cinzel', 'Trajan Pro', Georgia, serif" font-size="52" font-weight="400" fill="#C9A84C" letter-spacing="-1">R</text>
+  <!-- Thin vertical separator -->
+  <line x1="102" y1="20" x2="102" y2="112"
+        stroke="#C9A84C" stroke-width="0.5" opacity="0.16"/>
 
-  <!-- EWELS wordmark -->
-  <text x="185" y="160" font-family="'Cinzel', 'Trajan Pro', Georgia, serif" font-size="28" font-weight="400" fill="#C9A84C" letter-spacing="3">EWELS</text>
+  <!-- ══ VAJR WORDMARK ══ -->
+  <text
+    x="116" y="76"
+    font-family="Georgia, 'Palatino Linotype', Palatino, 'Book Antiqua', serif"
+    font-size="44"
+    font-weight="normal"
+    fill="#C9A84C"
+    letter-spacing="4">VAJR</text>
+
+  <!-- Thin decorative rule -->
+  <line x1="116" y1="85" x2="272" y2="85"
+        stroke="#C9A84C" stroke-width="0.55" opacity="0.32"/>
+
+  <!-- JEWELS sub-label -->
+  <text
+    x="117" y="101"
+    font-family="Georgia, 'Palatino Linotype', Palatino, serif"
+    font-size="10.5"
+    font-weight="normal"
+    fill="#C9A84C"
+    letter-spacing="5.8"
+    opacity="0.76">JEWELS</text>
+
 </svg>

@@ -55,7 +55,7 @@ img {
   --font-body:    'Raleway', 'Helvetica Neue', 'Arial', sans-serif;
 
   /* Spacing */
-  --section-padding: clamp(80px, 10vw, 160px);
+  --section-padding: clamp(56px, 10vw, 160px);
 
   /* Easing */
   --ease-luxury:  cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -142,6 +142,8 @@ img {
 
 .nav-logo-img {
   display: block;
+  width: clamp(100px, 14vw, 140px);
+  height: auto;
   filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
   transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), filter 0.4s;
 }
@@ -198,7 +200,7 @@ img {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--light);
+  color: var(--ivory);
   background: linear-gradient(135deg, var(--rust-light), var(--rust-orange));
   border: none;
   padding: 12px 28px;
@@ -230,26 +232,43 @@ img {
   width: 24px;
   height: 1px;
   background: var(--champagne);
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.35s var(--ease-smooth), opacity 0.25s, width 0.3s;
+  transform-origin: center;
+}
+
+/* Hamburger → X when menu open */
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .mobile-menu {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 0;
   background: rgba(14, 11, 8, 0.97);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(201, 168, 76, 0.15);
-  padding: 20px 0;
-  transform: translateY(-10px);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: transform 0.4s var(--ease-smooth), opacity 0.4s;
+  transition: max-height 0.45s var(--ease-smooth),
+              opacity 0.35s var(--ease-smooth),
+              padding 0.35s var(--ease-smooth);
   pointer-events: none;
 }
 
 .mobile-menu.open {
-  display: flex;
-  transform: translateY(0);
+  max-height: 400px;
+  padding: 20px 0;
   opacity: 1;
   pointer-events: all;
 }
@@ -914,7 +933,7 @@ img {
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-dark);
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -944,6 +963,7 @@ img {
 }
 
 .signature-track-wrapper {
+  position: relative;
   overflow: hidden;
   width: 100%;
   cursor: grab;
@@ -1235,8 +1255,8 @@ img {
 
 .showroom-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
-  border-color: rgba(201, 168, 76, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.13);
+  border-color: rgba(201, 168, 76, 0.25);
 }
 
 .showroom-img-wrap {
@@ -1331,15 +1351,13 @@ img {
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 400;
-  color: var(--champagne);
+  color: var(--text-muted);
   text-decoration: none;
-  opacity: 0.75;
-  transition: opacity 0.3s, color 0.3s;
+  transition: color 0.3s;
 }
 
 .showroom-phone:hover {
-  opacity: 1;
-  color: var(--gold-light);
+  color: var(--accent-primary);
 }
 
 
@@ -1953,6 +1971,7 @@ img {
   white-space: nowrap;
   z-index: 5;
   pointer-events: none;
+  opacity: 0; /* JS animates this */
 }
 
 /* The stage holds all panels absolutely */
@@ -1972,6 +1991,7 @@ img {
   inset: 0;
   display: flex;
   flex-direction: column;
+  opacity: 0; /* JS animates this; CSS prevents flash-of-all-panels */
   align-items: center;
   justify-content: center;
   padding: 0 clamp(20px, 6vw, 100px);
@@ -2096,9 +2116,9 @@ img {
 }
 
 .preloader-logo-pulse {
-  width: 320px;
+  width: clamp(180px, 40vw, 260px);
   height: auto;
-  opacity: 0.8;
+  opacity: 0.9;
   animation: logoPulse 2.5s ease-in-out infinite;
 }
 
