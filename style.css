@@ -519,23 +519,54 @@ img {
 /* ─── Scroll caption overlays ─────────────────────────────── */
 #scroll-captions {
   position: absolute;
-  bottom: 100px;
-  left: clamp(32px, 6vw, 120px);
+  inset: 0;
   z-index: 200;
   pointer-events: none;
 }
 
 .scroll-caption {
   position: absolute;
-  bottom: 0;
-  left: 0;
   opacity: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 280px;
   padding-left: 22px;
   border-left: 2px solid rgba(201, 168, 76, 0.7);
-  min-width: 320px;
+}
+
+/* Caption 0 — bottom-left */
+.scroll-caption[data-caption="0"] {
+  bottom: 100px;
+  left: clamp(32px, 6vw, 120px);
+}
+
+/* Caption 1 — mid-left */
+.scroll-caption[data-caption="1"] {
+  top: 40%;
+  left: clamp(32px, 6vw, 120px);
+}
+
+/* Caption 2 — top-right (flipped border) */
+.scroll-caption[data-caption="2"] {
+  top: clamp(80px, 12vh, 140px);
+  right: clamp(32px, 6vw, 120px);
+  text-align: right;
+  padding-left: 0;
+  padding-right: 22px;
+  border-left: none;
+  border-right: 2px solid rgba(201, 168, 76, 0.7);
+  align-items: flex-end;
+}
+
+/* Caption 3 — dead center */
+.scroll-caption[data-caption="3"] {
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  padding-left: 0;
+  border-left: none;
+  align-items: center;
 }
 
 .caption-eyebrow {

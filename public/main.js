@@ -239,7 +239,10 @@ function setupHeroScroll() {
           else                            opacity = 1;
         }
         el.style.opacity = opacity;
-        el.style.transform = `translateY(${(1 - opacity) * 14}px)`;
+        const drift = (1 - opacity) * 14;
+        el.style.transform = i === 3
+          ? `translate(-50%, calc(-50% + ${drift}px))`
+          : `translateY(${drift}px)`;
       });
     }
   });
