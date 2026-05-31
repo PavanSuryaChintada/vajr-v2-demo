@@ -519,9 +519,9 @@ img {
 /* ─── Scroll caption overlays ─────────────────────────────── */
 #scroll-captions {
   position: absolute;
-  bottom: 88px;
-  left: clamp(24px, 6vw, 100px);
-  z-index: 10;
+  bottom: 100px;
+  left: clamp(32px, 6vw, 120px);
+  z-index: 200;
   pointer-events: none;
 }
 
@@ -532,14 +532,17 @@ img {
   opacity: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  padding-left: 22px;
+  border-left: 2px solid rgba(201, 168, 76, 0.7);
+  min-width: 320px;
 }
 
 .caption-eyebrow {
   font-family: var(--font-label);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 400;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.6em;
   text-transform: uppercase;
   color: var(--gold);
   margin: 0;
@@ -547,10 +550,23 @@ img {
 
 .caption-phrase {
   font-family: var(--font-display);
-  font-size: clamp(22px, 3vw, 34px);
+  font-size: clamp(32px, 4.5vw, 58px);
   font-weight: 300;
-  color: var(--ivory);
-  line-height: 1.25;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.9),
+    0 0  48px rgba(0, 0, 0, 0.6);
+}
+
+.caption-sub {
+  font-family: var(--font-label);
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.6);
   margin: 0;
 }
 

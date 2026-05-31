@@ -176,14 +176,14 @@ function setupHeroScroll() {
   const heroCWrapper = document.getElementById('hero-canvas-wrapper');
   const frameBarFill = document.getElementById('frame-bar-fill');
   const heroContent = document.getElementById('hero-content');
-  const captionEls = document.querySelectorAll('.scroll-caption');
+  const captionEls = Array.from(document.querySelectorAll('.scroll-caption'));
   const CAPTIONS = [
-    { from: 0.22, to: 0.36 },
-    { from: 0.40, to: 0.54 },
-    { from: 0.58, to: 0.72 },
-    { from: 0.76, to: 0.87 },
+    { from: 0.20, to: 0.40 },
+    { from: 0.42, to: 0.58 },
+    { from: 0.60, to: 0.76 },
+    { from: 0.78, to: 0.88 },
   ];
-  const FADE = 0.04;
+  const FADE = 0.05;
 
   // Set the hero section height to create scroll distance
   heroSection.style.height = `${CONFIG.SCROLL_MULTIPLIER * 100}vh`;
@@ -239,6 +239,7 @@ function setupHeroScroll() {
           else                            opacity = 1;
         }
         el.style.opacity = opacity;
+        el.style.transform = `translateY(${(1 - opacity) * 14}px)`;
       });
     }
   });
