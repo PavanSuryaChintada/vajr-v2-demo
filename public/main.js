@@ -176,6 +176,14 @@ function setupHeroScroll() {
   const heroCWrapper = document.getElementById('hero-canvas-wrapper');
   const frameBarFill = document.getElementById('frame-bar-fill');
   const heroContent = document.getElementById('hero-content');
+  const captionEls = document.querySelectorAll('.scroll-caption');
+  const CAPTIONS = [
+    { from: 0.22, to: 0.36 },
+    { from: 0.40, to: 0.54 },
+    { from: 0.58, to: 0.72 },
+    { from: 0.76, to: 0.87 },
+  ];
+  const FADE = 0.04;
 
   // Set the hero section height to create scroll distance
   heroSection.style.height = `${CONFIG.SCROLL_MULTIPLIER * 100}vh`;
@@ -220,6 +228,18 @@ function setupHeroScroll() {
         state.particlesActive = false;
         cancelParticleTransition();
       }
+
+      // Scroll caption overlays
+      captionEls.forEach((el, i) => {
+        const { from, to } = CAPTIONS[i];
+        let opacity = 0;
+        if (progress >= from && progress <= to) {
+          if (progress < from + FADE)     opacity = (progress - from) / FADE;
+          else if (progress > to - FADE)  opacity = (to - progress) / FADE;
+          else                            opacity = 1;
+        }
+        el.style.opacity = opacity;
+      });
     }
   });
 }
